@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" method="upgrade" client="site">
+  <name>MOD_TAG2MENU_NAME</name><!-- Languagestring (COM_ISAN_NAME) möglich -->
+  <creationDate>August 2015</creationDate>
+  <author>Christian Baur</author>
+  <authorEmail>kontakt@i-san.de</authorEmail>
+  <authorUrl>http://i-san.de</authorUrl>
+  <copyright>(c) 2015 I-SAN.de. All rights reserved.</copyright>
+  <license>GPL v2 or later; see LICENSE file</license>
+  <version>1.0.0</version>
+  <description>MOD_TAG2MENU_DESC</description>
+
+  <files>
+    <filename module="mod_tag2menu">mod_tag2menu.php</filename>
+    <filename>helper.php</filename>
+    <filename>mod_tag2menu.xml</filename>
+    <folder>tmpl</folder>
+    <folder>language</folder>
+  </files>
+
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field
+          name="tags"
+          label="JTAG"
+          description="JTAG_DESC"
+          type="tag"
+          multiple="true"
+          required="true"
+          mode="ajax"
+          />
+          <field
+            type="spacer"
+            name="myspacer"
+            label="MOD_TAG2MENU_FIELDSPACER_MENUHEADERS"
+            />
+            <field
+              name="showHeadlines"
+              default="1"
+              label="MOD_TAG2MENU_FIELD_SHOWHEADLINES"
+              description="MOD_TAG2MENU_FIELD_SHOWHEADLINES_DESC"
+              type="radio"
+              class="btn-group btn-group-yesno"
+              >
+              <option value="1">JYES</option>
+              <option value="0">JNO</option>
+            </field>
+            <field
+              name="useNote"
+              default="0"
+              label="MOD_TAG2MENU_FIELD_USENOTE"
+              description="MOD_TAG2MENU_FIELD_USENOTE_DESC"
+              type="radio"
+              class="btn-group btn-group-yesno"
+              >
+              <option value="1">JYES</option>
+              <option value="0">JNO</option>
+            </field>
+            <field
+              name="beforeHeadlines"
+              label="MOD_TAG2MENU_FIELD_BEFOREHEADLINES"
+              description="MOD_TAG2MENU_FIELD_BEFOREHEADLINES_DESC"
+              type="text"
+              />
+              <field
+                name="afterHeadlines"
+                label="MOD_TAG2MENU_FIELD_AFTERHEADLINES"
+                description="MOD_TAG2MENU_FIELD_AFTERHEADLINES_DESC"
+                type="text"
+                />
+              </fieldset>
+              <fieldset name="bootstrap" label="Bootstrap">
+                <field
+                  name="bootstrapVersion"
+                  default="2"
+                  label="MOD_TAG2MENU_FIELD_BOOTSTRAPVERSION"
+                  description="MOD_TAG2MENU_FIELD_BOOTSTRAPVERSION_DESC"
+                  type="list"
+                  class="inputbox span1 small"
+                  >
+                  <option value="1">JNONE</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </field>
+                <field
+                  name="bootstrapSize"
+                  default="3"
+                  first="1"
+                  last="12"
+                  step="1"
+                  type="integer"
+                  label="MOD_TAG2MENU_FIELD_BOOTSTRAPSIZE"
+                  description="MOD_TAG2MENU_FIELD_BOOTSTRAPSIZE_DESC"
+                  class="inputbox span1 small"
+                  />
+                  <field
+                    name="maxItems"
+                    default="999"
+                    type="text"
+                    label="MOD_TAG2MENU_FIELD_MAXITEMS"
+                    description="MOD_TAG2MENU_FIELD_MAXITEMS_DESC"
+                    />
+                    <field
+                      name="addBsContainer"
+                      default="0"
+                      label="MOD_TAG2MENU_FIELD_ADD_BS_CONTAINER"
+                      description="MOD_TAG2MENU_FIELD_ADD_BS_CONTAINER_DESC"
+                      type="radio"
+                      class="btn-group btn-group-yesno"
+                      >
+                      <option value="1">JYES</option>
+                      <option value="0">JNO</option>
+                    </field>
+                    <field
+                      name="addBsContainer"
+                      default="0"
+                      label="MOD_TAG2MENU_FIELD_BS_CONTAINER_TYPE"
+                      description="MOD_TAG2MENU_FIELD_BS_CONTAINER_TYPE_DESC"
+                      type="radio"
+                      class="btn-group btn-group-yesno"
+                      >
+                      <option value="container">MOD_TAG2MENU_BS_CONTAINER_FIXED</option>
+                      <option value="container-fluid">MOD_TAG2MENU_BS_CONTAINER_FLUID</option>
+                    </field>
+                  </fieldset>
+                </fields>
+              </config>
+
+              <updateservers>
+                <server type="extension" priority="1" name="Extension update site">http://www.i-san.de/extensions/update/mod_tag2menu-update.xml</server>
+              </updateservers>
+            </extension>
