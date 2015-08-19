@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  mod_tag2menu
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, , Inc. Modified by Christian Baur for use in mod_tag2menu. All rights reserved.
+ * @copyright   Copyright (C) 2015 Christian Baur (I-SAN.de Webdesign & Hosting GbR). All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,7 +19,7 @@ defined('_JEXEC') or die;
 abstract class ModTag2menuHelper
 {
 	/**
-	 * Get list of tags
+	 * Get list of tags organized in rows
 	 *
 	 * @param   JRegistry  &$params  module parameters
 	 *
@@ -104,6 +104,8 @@ abstract class ModTag2menuHelper
 							   );
 			$db->setQuery($query, 0, 1000);
 			$items = $db->loadObjectList();
+
+			// Bootstrap specific stuff
 			if($params->get('bootstrapVersion') > 1) { // 1 = no bootstrap
 				$numItems = count($items);
 				$bootstrapSize= $params->get('bootstrapSize');
@@ -124,7 +126,8 @@ abstract class ModTag2menuHelper
 			}
 			$tag->items = $items;
 
-			$totalCols += $tag->bootstrapSize;
+			// package the tags in bootstrap rows
+			$totalCols += $bootstrapSize;
 			if ($totalCols > 12) {
 				$totalCols = 0;
 				$rows[] = $actualRow;
@@ -136,7 +139,6 @@ abstract class ModTag2menuHelper
 				$actualRow[] = $tag;
 			}
 		}
-
 
 		return $rows;
 	}
