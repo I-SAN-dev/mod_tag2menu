@@ -52,7 +52,7 @@ abstract class ModTag2menuHelper
 
 		// Only return published tags
 		$query->where($db->quoteName('t.published') . ' = 1 ');
-		
+
 		// Only return tags in our list
 		$query->where($db->quoteName('tag_id') . ' IN (' . $tags . ')');
 
@@ -69,7 +69,7 @@ abstract class ModTag2menuHelper
 			$query->where($db->quoteName('t.language') . ' IN (' . $db->quote($language) . ', ' . $db->quote('*') . ')');
 		}
 
-		
+
 		$query->join('INNER', $db->quoteName('#__tags', 't') . ' ON ' . $db->quoteName('tag_id') . ' = t.id')
 			->join('INNER', $db->quoteName('#__ucm_content', 'c') . ' ON ' . $db->quoteName('m.core_content_id') . ' = ' . $db->quoteName('c.core_content_id'));
 
@@ -81,15 +81,17 @@ abstract class ModTag2menuHelper
 			->where('(' . $db->quoteName('c.core_publish_down') . ' = ' . $nullDate . ' OR  ' . $db->quoteName('c.core_publish_down') . ' >= ' . $nowDate . ')');
 		$db->setQuery($query, 0, $maximum);
 		$results = $db->loadObjectList();
-		
+
 		JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php');
 		$helper = new JHelperTags;
-		
-		
-		
-		
-		
-		foreach($results as $tag){
+
+
+
+
+		$totalCols = 0;
+		$totalResults = count($results);
+		$rows = [];
+		foreach($results as $key=>$tag){
 			$query = $helper->getTagItemsQuery(
 							   intval($tag->tag_id),
 							   $typesr = null,
@@ -121,8 +123,21 @@ abstract class ModTag2menuHelper
 				$tag->bootstrapSize = $bootstrapSize;
 			}
 			$tag->items = $items;
+
+			$totalCols += $tag->bootstrapSize;
+			if ($totalCols > 12) {
+				$totalCols = 0;
+				$rows[] = $actualRow;
+				$actualRow = [$tag];
+				if($key == $totalResults-1) {
+					$rows[] = $actualRow;
+				}
+			} else {
+				$actualRow[] = $tag;
+			}
 		}
-		
-		return $results;
+
+
+		return $rows;
 	}
 }
