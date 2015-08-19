@@ -1,7 +1,9 @@
+<?php
 /**
  * This file is part of mod_tag2menu
  * It contains standard Joomla menu markup genrated from tagged items
  */
+ ?>
 <ul class="nav menu">
 <?php foreach ($col as $item) :
     $id = $item->content_item_id.':'.$item->core_alias;
