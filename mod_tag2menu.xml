@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.0" method="upgrade" client="site">
-  <name>MOD_TAG2MENU_NAME</name><!-- Languagestring (COM_ISAN_NAME) möglich -->
+  <name>MOD_TAG2MENU_NAME</name>
   <creationDate>August 2015</creationDate>
   <author>Christian Baur</author>
   <authorEmail>kontakt@i-san.de</authorEmail>
@@ -113,8 +113,8 @@
                       <option value="0">JNO</option>
                     </field>
                     <field
-                      name="addBsContainer"
-                      default="0"
+                      name="bootstrapContainer"
+                      default="container"
                       label="MOD_TAG2MENU_FIELD_BS_CONTAINER_TYPE"
                       description="MOD_TAG2MENU_FIELD_BS_CONTAINER_TYPE_DESC"
                       type="radio"

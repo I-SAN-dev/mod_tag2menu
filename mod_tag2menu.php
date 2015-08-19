@@ -54,20 +54,20 @@ if (!empty($list))
 
 			// set bootstrap class names according to version
 	    switch($bootstrapVersion) {
-		case 2:
-			$bootstrapRow = 'row-fluid';
-			$bootstrapCol = 'span';
-			break;
-		case 3:
-			$bootstrapRow = 'row';
-			$bootstrapCol = 'col-sm-';
-			break;
-		default:
-			$bootstrapRow = '';
-			$bootstrapCol = '';
-			$bootstrapSize = '';
-			break;
-	    }
+				case 2:
+					$bootstrapRow = 'row-fluid';
+					$bootstrapCol = 'span';
+					break;
+				case 3:
+					$bootstrapRow = 'row';
+					$bootstrapCol = 'col-sm-';
+					break;
+				default:
+					$bootstrapRow = '';
+					$bootstrapCol = '';
+					$bootstrapSize = '';
+					break;
+			}
 
 	    // load the layout
 	    require JModuleHelper::getLayoutPath('mod_tag2menu', $params->get('layout', 'default'));
