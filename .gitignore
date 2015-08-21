@@ -35,3 +35,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# NPM & Grunt
+node_modules/
+Gruntfile.js
